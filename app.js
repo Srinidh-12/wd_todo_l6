@@ -48,6 +48,7 @@ catch(error){
 
 app.get("/todos", async (request, response) => {
   // defining route to displaying message
+  //li
   console.log("Displaying Todo list");
   try {
     const todoslist = await Todo.findAll();
