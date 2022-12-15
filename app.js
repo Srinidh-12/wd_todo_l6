@@ -8,7 +8,7 @@ let cookieParser = require("cookie-parser");
 
 // eslint-disable-next-line no-unused-vars
 const todo = require("./models/todo");
-//app.use()
+//appuse()
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("shh! some secret string"));
@@ -17,7 +17,7 @@ app.use(csrf("this_should_be_32_charactes_long", ["PUT", "POST", "DELETE"]));
 // eslint-disable-next-line no-undef
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
-//app.get()
+//appget()
 app.get("/", async function (request, response) {
   try {
     const overdueItems = await Todo.getOverdueItems();
