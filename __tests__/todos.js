@@ -10,7 +10,7 @@ function extractCsrfToken(res) {
   return $("[name=_csrf]").val();
 }
 //for to do application 
-describe("Todo Application", function () {
+describe("Application", function () {
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
     server = app.listen(4000, () => {});
@@ -21,7 +21,7 @@ describe("Todo Application", function () {
     server.close();
   });
 
-  test("Creates a new todo ", async () => {
+  test("Creating a new todo ", async () => {
     const res = await agent.get("/");
     const csrfToken = extractCsrfToken(res);
     const response = await agent.post("/todos").send({
@@ -33,7 +33,7 @@ describe("Todo Application", function () {
     expect(response.statusCode).toBe(302);
   });
 
-  test("Marking todo as complete", async () => {
+  test("Mark the todo as complete", async () => {
     let res = await agent.get("/");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/todos").send({
@@ -60,7 +60,7 @@ describe("Todo Application", function () {
     expect(parsedUpdateResponse.completed).toBe(true);
   });
 
-  test("Marking todo as incomplete", async () => {
+  test("Mark the todo as incomplete", async () => {
     let res = await agent.get("/");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/todos").send({
@@ -87,7 +87,7 @@ describe("Todo Application", function () {
     expect(parsedUpdateResponse.completed).toBe(true);
   });
 
-  test("Delete a todo with ID", async () => {
+  test("Deleting the todo with ID", async () => {
     let res = await agent.get("/");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/todos").send({

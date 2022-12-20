@@ -91,7 +91,7 @@ app.get("/", async function (request, response) {
     });
   }
 });
-
+//Retriving Todo's data
 app.get(
   "/todos",
   connectEnsureLogin.ensureLoggedIn(),
@@ -127,7 +127,7 @@ app.get(
     }
   }
 );
-
+//Sign-up
 app.get("/signup", (request, response) => {
   response.render("signup", {
     title: "Sign up",
@@ -173,7 +173,7 @@ app.post("/users", async (request, response) => {
     return response.redirect("/signup");
   }
 });
-
+//Login
 app.get("/login", (request, response) => {
   response.render("login", {
     title: "Login",
@@ -191,7 +191,7 @@ app.post(
     response.redirect("/todos");
   }
 );
-
+//Sign-out
 app.get("/signout", (request, response, next) => {
   request.logout((err) => {
     if (err) {
@@ -283,9 +283,8 @@ app.delete(
       console.log(error);
       return response.status(422).json(error);
     }
-    // First, we have to query our database to delete a Todo by ID.
-    // Then, we have to respond back with true/false based on whether the Todo was deleted or not.
-    // response.send(true)
+    // First, we should query our database to delete a Todo by ID and then we have to respond back with true/false
+    // based on whether the Todo was deleted or not.
   }
 );
 
