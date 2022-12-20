@@ -14,7 +14,6 @@ const LocalStratergy = require("passport-local");
 
 const saltRounds = 10;
 
-// eslint-disable-next-line no-undef
 app.set("views", path.join(__dirname, "views"));
 app.use(flash());
 app.use(bodyParser.json());
@@ -78,7 +77,7 @@ passport.deserializeUser((id, done) => {
 });
 
 app.set("view engine", "ejs");
-// eslint-disable-next-line no-undef
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async function (request, response) {
