@@ -172,33 +172,7 @@ app.post("/users", async (request, response) => {
     return response.redirect("/signup");
   }
 });
-//Login
-app.get("/login", (request, response) => {
-  response.render("login", {
-    title: "Login",
-    csrfToken: request.csrfToken(),
-  });
-});
 
-app.post(
-  "/session",
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureFlash: true,
-  }),
-  (request, response) => {
-    response.redirect("/todos");
-  }
-);
-//Sign-out
-app.get("/signout", (request, response, next) => {
-  request.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    response.redirect("/");
-  });
-});
 
 // app.get("/todos", async function (_request, response) {
 //   console.log("Processing list of all Todos ...");
